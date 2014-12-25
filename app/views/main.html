@@ -1,0 +1,28 @@
+<div class="jumbotron">
+  <h1>Roll Roller</h1>
+</div>
+
+<div id="main">
+  <div class="row marketing">
+    <ul id="Roll">
+      <li ng-repeat="dice in Roll">
+        <div id="dice-list">
+          <p>
+            {{dice.number}}d{{dice.size}} + {{dice.add}}
+            <button ng-click="dice.rollDice()">Roll</button>
+          </p>
+          <p>
+            result: {{dice.result}}
+          </p>
+          <p>Rolled:
+            <span ng-repeat="die in dice.results">
+              <span>{{die}} </span> 
+            </span>
+
+          </p>
+
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
