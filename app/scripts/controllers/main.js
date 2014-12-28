@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the learningApp
  */
-angular.module('learningApp')
+angular.module('controllers')
   .controller('MainCtrl', ['$scope', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

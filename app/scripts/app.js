@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var learning = angular
   .module('learningApp', [
     'ngAnimate',
     'ngAria',
@@ -17,6 +17,7 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
+    'controllers',
     'ngTouch'
   ])
   .config(function ($routeProvider) {
