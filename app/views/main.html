@@ -3,13 +3,33 @@
 </div>
 
 <div id="main">
-  <div class="row marketing">
+  <div class="row">
+    <div class="col-md-5">
+        <div class="form-group">
+          <label class="col-md-7" for="number">Number of Dice</label>
+          <div class="col-md-5">
+            <input type="number" name="Number of Dice" class="form-control" id="number" ng-model="numDice" />
+          </div>
+          <label class="col-md-7" for="size">Size of Dice</label>
+          <div class="col-md-5">
+            <input type="number" name="Size of Dice" class="form-control" id="size" value=""  ng-model="sizeOfDie" />
+          </div>
+          <label class="col-md-7" for="add">Amount to Add</label>
+          <div class="col-md-5">
+            <input type="number" name="Amount to Add" class="form-control" id="add" ng-model="amountToAdd"  value="" />
+          </div>
+          <button class="btn btn-primary" ng-click="Roll.add(numDice,sizeOfDie,amountToAdd)">Add Roller</button>
+        </div>
+    </div>
+  </div>
+  <div class="row">
     <ul id="Roll">
       <li ng-repeat="dice in Roll.rolls">
         <div id="dice-list">
           <p>
-            {{dice.number}}d{{dice.size}} + {{dice.add}}
-            <button ng-click="dice.rollDice()">Roll</button>
+            {{dice.number}}d{{dice.sizeOfDice}} + {{dice.add}}
+            <button class="btn btn-default" ng-click="dice.rollDice()">Roll</button>
+            <button class="btn btn-default" ng-click="Roll.remove($index)">Remove</button>
           </p>
           <p>
             result: {{dice.result}}

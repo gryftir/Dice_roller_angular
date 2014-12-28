@@ -14,30 +14,34 @@ var controllers = angular.module('controllers')
     'AngularJS',
     'Karma'
   ];
-  $scope.Roll = Roll.add(6, 2).add(8, 2);
+  $scope.Roll = Roll.add( 2, 6).add(2,8);
 }
 ]);
 
 controllers.service('Roll', [function() {
   var self = this;
   this.rolls = [];
-  this.add = function(size, number) {
-    var add = {};
-    add.number = number || 1;
-    add.size = size || 6;
-    add.add = 0;
-    add.rollDice = function() {
-      this.result = 0;
+  this.add = function(number, sizeOfDice, add) {
+    var newRoll = {};
+    newRoll.number = number || 1;
+    newRoll.sizeOfDice = sizeOfDice || 6;
+    newRoll.add = add || 0;
+    newRoll.rollDice = function() {
+      var result = 0;
       var results=[];
-      for (var i = 0; i < this.number; i++) {
-        var roll = Math.floor(Math.random() * this.size) + 1; 
-        this.result += roll;
+      for (var i = 0; i < newRoll.number; i++) {
+        var roll = Math.floor(Math.random() * newRoll.sizeOfDice) + 1; 
+        result += roll;
         results.push(roll);
       }
-      add.results = results;
+      newRoll.results = results;
+      newRoll.result = result;
     }
-    self.rolls.push(add);
+    self.rolls.push(newRoll);
     return self;
+  }
+  this.remove = function(index) {
+    self.rolls.splice(index, 1);
   }
 }]);
 
