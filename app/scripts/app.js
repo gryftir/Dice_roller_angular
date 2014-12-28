@@ -18,6 +18,7 @@ var learning = angular
     'ngRoute',
     'ngSanitize',
     'controllers',
+    //'RollModule',
     'ngTouch'
   ])
   .config(function ($routeProvider) {
