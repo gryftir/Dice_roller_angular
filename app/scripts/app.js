@@ -10,25 +10,17 @@
  */
 var learning = angular
   .module('learningApp', [
-    'ngAnimate',
-    'ngAria',
-    'ngCookies',
-    'ngMessages',
-    'ngResource',
     'ngRoute',
     'ngSanitize',
     'controllers',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+
+  learning.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
       })
       .otherwise({
         redirectTo: '/'
