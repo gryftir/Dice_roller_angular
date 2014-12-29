@@ -36,13 +36,13 @@ controllers.service('Roll', [function() {
       }
       newRoll.results = results;
       newRoll.result = result;
-    }
+    };
     self.rolls.push(newRoll);
     return self;
-  }
+  };
   this.remove = function(index) {
     self.rolls.splice(index, 1);
-  }
+  };
 }]);
 
 
