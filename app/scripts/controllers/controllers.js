@@ -1,5 +1,7 @@
-var controllers = angular.module('controllers', []);
-//var controllers = angular.module('controllers', ['MainCtrl']);
+//module for all controllers
+'use strict';
+angular.module('controllers', []);
+
 
 
 

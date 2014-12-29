@@ -13,8 +13,9 @@ var learning = angular
     'ngRoute',
     'ngSanitize',
     'controllers',
-    'ngTouch'
-  ])
+    'ngTouch',
+    'services',
+  ]);
 
   learning.config(function ($routeProvider) {
     $routeProvider
