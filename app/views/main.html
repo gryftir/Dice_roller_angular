@@ -8,15 +8,15 @@
         <div class="form-group">
           <label class="col-md-7" for="number">Number of Dice</label>
           <div class="col-md-5">
-            <input type="number" min="0" name="Number of Dice" class="form-control" id="number" ng-model="numDice" />
+            <input type="number" min="0" placeholder="1" name="Number of Dice" class="form-control" id="number" ng-model="numDice" />
           </div>
           <label class="col-md-7" for="size">Size of Dice</label>
           <div class="col-md-5">
-            <input type="number"  min="0" name="Size of Dice" class="form-control" id="size" value=""  ng-model="sizeOfDie" />
+            <input type="number"  min="0" placeholder="6" name="Size of Dice" class="form-control" id="size" value=""  ng-model="sizeOfDie" />
           </div>
           <label class="col-md-7" for="add">Bonus/Penalty to Roll Result</label>
           <div class="col-md-5">
-            <input type="number" min="0" name="Amount to Add" class="form-control" id="add" ng-model="amountToAdd"  value="" />
+            <input type="number" min="0" placeholder="0" name="Amount to Add" class="form-control" id="add" ng-model="amountToAdd"  value="" />
           </div>
           <button class="btn btn-primary" ng-click="Roll.add(numDice,sizeOfDie,amountToAdd)">Add Roller</button>
         </div>
