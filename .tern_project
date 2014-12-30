@@ -1,0 +1,20 @@
+{
+  "libs": [
+    "browser",
+    "jquery"
+  ],
+  "loadEagerly": [
+    "./app/scripts/app.js",
+  "./app/scripts/controllers/controllers.js",
+  "./app/scripts/controllers/main.js",
+  "./app/scripts/services/roll/roll.js"
+  ],
+  "plugins": {
+    "angular":{
+      "baseURL": "./",
+      "paths": {}
+    }
+  }
+}
+
+
