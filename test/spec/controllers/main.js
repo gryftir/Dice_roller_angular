@@ -1,22 +1,20 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+//describe('Controller: MainCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('learningApp'));
 
-  var MainCtrl,
-    scope;
+    //var $scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
-    });
-  }));
+    //beforeEach(module('learningApp'));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
-});
+    //beforeEach(inject(function($rootScope, $controller) {
+      //$scope = $rootScope.$new();
+      //$controller('MainCtrl', {$scope: $scope});
+    //}));
+
+
+  //it('should attach a Roll service to scope as Roll with two Rolls added', function () {
+    //expect($scope.Roll).not.toBe(null);
+    //expect($scope.Roll.rolls.length).toBe(2);
+  //});
+//});

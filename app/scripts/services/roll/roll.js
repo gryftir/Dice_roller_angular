@@ -9,11 +9,10 @@
  */
 var services = angular.module('services', []);
 
-'use strict';
-services.service('Roll', [function() {
-  var self = this;
-  this.rolls = [];
-  this.add = function(number, sizeOfDice, add) {
+services.factory('Roll', [function() {
+  var self = {};
+  self.rolls = [];
+  self.add = function(number, sizeOfDice, add) {
     var newRoll = {};
     newRoll.number = number || 1;
     newRoll.sizeOfDice = sizeOfDice || 6;
@@ -32,9 +31,10 @@ services.service('Roll', [function() {
     self.rolls.push(newRoll);
     return self;
   };
-  this.remove = function(index) {
-    self.rolls.splice(index, 1);
-  };
+  self.remove = function(index) {
+      self.rolls.splice(index, 1);
+    };
+  return self;
 }]);
 
 
