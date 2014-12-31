@@ -47,4 +47,15 @@ describe('Service: Roll', function () {
     Roll.add(1,7,1);
     expect(Roll.rolls[0]).not.toEqual(Roll.rolls[1]);
   });
+  it('allows you to make and access subrollers', function() {
+    var rollCompare = function(a, b) {
+      return (a.number === b.number && a.sizeOfDice === b.sizeOfDice && a.add === b.add);
+    };
+    jasmine.addCustomEqualityTester(rollCompare);
+    Roll.add();
+    expect(Roll.rolls[0]).toBeDefined();
+    //expect(Roll.rolls[0].Roll).toBeDefined();
+    
+    //expect(Roll.rolls[0].Roll.rolls.length).toEqual(1);
+  });
 });
