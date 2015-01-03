@@ -27,7 +27,7 @@
       <li ng-repeat="dice in Roll.rolls">
         <div id="dice-list">
           <p>
-            {{dice.number}}d{{dice.sizeOfDice}} + {{dice.add}}
+            {{dice.number}}d{{dice.sizeOfDice}} + {{dice.addValue}}
             <button class="btn btn-default" ng-click="dice.rollDice()">Roll</button>
             <button class="btn btn-default" ng-click="Roll.remove($index)">Remove</button>
           </p>
