@@ -9,8 +9,8 @@
  */
 angular.module('controllers')
 .controller('MainCtrl', ['$scope', 'Roll', function ($scope, Roll) {
-  Roll.add(2,6);
-  Roll.add(2,8);
+  Roll.add(2,6, 0,'Example 2d6+0');
+  Roll.add(2,8,1, 'Example 2: 2d8+1');
   $scope.Roll = Roll;
   $scope.AddRolls = [
     {
@@ -36,13 +36,4 @@ angular.module('controllers')
   }
   ];
 }]);
-
-
-
-  //<div class="row vert-10">
-  //<label class="col-sm-7" ng-class="{{addroll.class}}" for="{{addroll.id}}">{{addroll.label}}</label>
-  //<div class="col-sm-5 pull-right">
-  //<input type="number" min="0" placeholder="{{addroll.placeholder}}" name="{{addroll.label}}" class="form-control" id="{{addroll.id}}" ng-model="{{addroll.model}}"/>
-  //</div>
-  //</div>
 

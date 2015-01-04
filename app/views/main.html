@@ -23,6 +23,9 @@
       </div>
     </div>
     <div class="panel panel-primary shadow-z1" ng-repeat="dice in Roll.rolls">
+      <div class="panel-heading">
+        {{dice.title}}
+      </div>
       <div class="panel-body">
         {{dice.number}}d{{dice.sizeOfDice}} + {{dice.addValue}}
         <button class="btn btn-primary" ng-click="dice.rollDice()">Roll</button>
