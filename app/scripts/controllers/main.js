@@ -14,25 +14,36 @@ angular.module('controllers')
   $scope.Roll = Roll;
   $scope.AddRolls = [
     {
+      'label':'Roller Title',
+      'class':false,
+      'id':'title',
+      'model':'setTitle',
+      'placeholder': 'Title',
+      'type':'text'
+    },
+    {
     'label':'Number of Dice',
     'class':false,
     'id':'numberOfDice',
     'model':'numDice',
-    'placeholder': '1'
+    'placeholder': '1',
+    'type':'number',
   },
   {
     'label':'Size of Die',
     'class':false,
     'id':'sizeOfDie',
     'model':'sizeOfDie',
-    'placeholder': '6'
+    'placeholder': '6',
+    'type':'number',
   },
   {
     'label':'Bonus / Penalty to Roll Result',
     'class':false,
     'id':'amountToAdd',
     'model':'amountToAdd',
-    'placeholder': '0'
+    'placeholder': '0',
+    'type':'number',
   }
   ];
 }]);
