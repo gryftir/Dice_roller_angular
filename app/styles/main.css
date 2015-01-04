@@ -59,6 +59,18 @@ body {
   margin-top: 28px;
 }
 
+.vert-10 {
+  margin: 10px 0px 10px 0px;
+}
+
+.wrapper {
+  background-color: white;
+}
+
+.grid {
+  background-image: url("../images/gridme.png");
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
