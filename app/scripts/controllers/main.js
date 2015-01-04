@@ -9,7 +9,9 @@
  */
 angular.module('controllers')
 .controller('MainCtrl', ['$scope', 'Roll', function ($scope, Roll) {
-  $scope.Roll = Roll.add( 2, 6).add(2,8);
+  Roll.add(2,6);
+  Roll.add(2,8);
+  $scope.Roll = Roll;
 }
 ]);
 
