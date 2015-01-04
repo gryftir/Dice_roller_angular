@@ -1,52 +1,50 @@
-<div class="grid">
-  <div class="wrapper container">
-    <div class="jumbotron">
-      <h1>Roll Roller</h1>
-    </div>
+<div class="wrapper container">
+  <div class="jumbotron shadow-z1">
+    <h1>Roll Roller</h1>
+  </div>
 
-    <div id="main">
-      <div class="row panel panel-primary">
-        <div class="panel-body">
-          <div class="col-sm-5">
-            <div class="row">
-              <label class="col-sm-7" for="number">Number of Dice</label>
-              <div class="col-sm-5">
-                <input type="number" min="0" placeholder="1" name="Number of Dice" class="form-control" id="number" ng-model="numDice" />
-              </div>
-            </div>
-            <div class="row">
-              <label class="col-sm-7" for="size">Size of Dice</label>
-              <div class="col-sm-5">
-                <input type="number"  min="0" placeholder="6" name="Size of Dice" class="form-control" id="size" value=""  ng-model="sizeOfDie" />
-              </div>
-            </div>
-            <div class="row">
-              <label class="col-sm-7" for="add">Bonus/Penalty to Roll Result</label>
-              <div class="col-sm-5">
-                <input type="number" min="0" placeholder="0" name="Amount to Add" class="form-control" id="add" ng-model="amountToAdd"  value="" />
-              </div>
+  <div id="main">
+    <div class="row panel panel-primary shadow-z1">
+      <div class="panel-body">
+        <div class="col-sm-5">
+          <div class="row">
+            <label class="col-sm-7" for="number">Number of Dice</label>
+            <div class="col-sm-5">
+              <input type="number" min="0" placeholder="1" name="Number of Dice" class="form-control" id="number" ng-model="numDice" />
             </div>
           </div>
-        </div>
-        <div class="panel-footer">
-          <button class="btn btn-primary" ng-click="Roll.add(numDice,sizeOfDie,amountToAdd)">Add Roller</button>
+          <div class="row">
+            <label class="col-sm-7" for="size">Size of Dice</label>
+            <div class="col-sm-5">
+              <input type="number"  min="0" placeholder="6" name="Size of Dice" class="form-control" id="size" value=""  ng-model="sizeOfDie" />
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-7" for="add">Bonus/Penalty to Roll Result</label>
+            <div class="col-sm-5">
+              <input type="number" min="0" placeholder="0" name="Amount to Add" class="form-control" id="add" ng-model="amountToAdd"  value="" />
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="panel panel-primary" ng-repeat="dice in Roll.rolls">
-          <div class="panel-body">
-            {{dice.number}}d{{dice.sizeOfDice}} + {{dice.addValue}}
-            <button class="btn btn-primary" ng-click="dice.rollDice()">Roll</button>
-            <button class="btn btn-default pull-right" ng-click="Roll.remove($index)">Remove</button>
+      <div class="panel-footer">
+        <button class="btn btn-primary" ng-click="Roll.add(numDice,sizeOfDie,amountToAdd)">Add Roller</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="panel panel-primary shadow-z1" ng-repeat="dice in Roll.rolls">
+        <div class="panel-body">
+          {{dice.number}}d{{dice.sizeOfDice}} + {{dice.addValue}}
+          <button class="btn btn-primary" ng-click="dice.rollDice()">Roll</button>
+          <button class="btn btn-default pull-right" ng-click="Roll.remove($index)">Remove</button>
+        </div>
+        <div class="panel-footer">
+          <div> Result: <span class="badge">{{dice.result}}</span>
           </div>
-          <div class="panel-footer">
-            <div> Result: <span class="badge">{{dice.result}}</span>
-            </div>
-            <div>Rolled:
-              <span ng-repeat="die in dice.results">
-                <span class="badge">{{die}} </span> 
-              </span>
-            </div>
+          <div>Rolled:
+            <span ng-repeat="die in dice.results">
+              <span class="badge">{{die}} </span> 
+            </span>
           </div>
         </div>
       </div>
