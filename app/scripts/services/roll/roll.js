@@ -13,12 +13,13 @@ var services = angular.module('services', []);
 function MakeRoll() {
 }
 
-function AddRoll(number, sizeOfDice, add) {
+function AddRoll(number, sizeOfDice, add, title) {
   var self = this;
   this.rolls = [];
-  this.add = function(number, sizeOfDice, add) {
-    self.rolls.push(new AddRoll(number, sizeOfDice, add));
+  this.add = function(number, sizeOfDice, add, title) {
+    self.rolls.push(new AddRoll(number, sizeOfDice, add, title));
   };
+  this.title = title || '';
   this.number = number || 1;
   this.sizeOfDice = sizeOfDice || 6;
   this.addValue = add || 0;
