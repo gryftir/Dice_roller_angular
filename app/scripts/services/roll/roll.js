@@ -27,12 +27,12 @@ function AddRoll(number, sizeOfDice, add, title) {
     var result = 0;
     var results=[];
     for (var i = 0; i < this.number; i++) {
-      var roll = Math.floor(Math.random() * this.sizeOfDice) + 1 + this.addValue; 
+      var roll = Math.floor(Math.random() * this.sizeOfDice) + 1; 
       result += roll;
       results.push(roll);
     }
     this.results = results;
-    this.result = result;
+    this.result = result + this.addValue;
     return this;
   };
   this.remove = function(index) {
