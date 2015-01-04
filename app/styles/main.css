@@ -45,6 +45,10 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  font-family: 'PT Serif', serif;
+  font-weight: 700;
+  background-color: white;
+
 }
 .jumbotron .btn {
   font-size: 21px;
@@ -58,6 +62,25 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
+
+.vert-10 {
+  margin: 10px 0px 10px 0px;
+}
+
+.wrapper {
+  background-color: white;
+}
+
+.grid {
+  background-image: url("../images/gridme.png");
+}
+
+.shadow-z1 {
+  -mox-box-shadow: 0px 2px 5px 0 rgba(0,0,0,0.26);
+  -webkit-box-shadow: 0px 2px 5px 0 rgba(0,0,0,0.26);
+  box-shadow: 0px 2px 5px 0 rgba(0,0,0,0.26);
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

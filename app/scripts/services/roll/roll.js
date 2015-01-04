@@ -9,34 +9,43 @@
  */
 var services = angular.module('services', []);
 
-services.factory('Roll', [function() {
-  var self = {};
-  self.rolls = [];
-  self.add = function(number, sizeOfDice, add) {
-    var newRoll = {};
-    newRoll.number = number || 1;
-    newRoll.sizeOfDice = sizeOfDice || 6;
-    newRoll.add = add || 0;
-    newRoll.rollDice = function() {
-      var result = 0;
-      var results=[];
-      for (var i = 0; i < newRoll.number; i++) {
-        var roll = Math.floor(Math.random() * newRoll.sizeOfDice) + 1; 
-        result += roll;
-        results.push(roll);
-      }
-      newRoll.results = results;
-      newRoll.result = result;
-    };
-    self.rolls.push(newRoll);
-    return self;
+
+function MakeRoll() {
+}
+
+function AddRoll(number, sizeOfDice, add, title) {
+  var self = this;
+  this.rolls = [];
+  this.add = function(number, sizeOfDice, add, title) {
+    self.rolls.push(new AddRoll(number, sizeOfDice, add, title));
   };
-  self.remove = function(index) {
-      self.rolls.splice(index, 1);
-    };
-  return self;
-}]);
+  this.title = title || 'Title';
+  this.number = number || 1;
+  this.sizeOfDice = sizeOfDice || 6;
+  this.addValue = add || 0;
+  this.rollDice = function() {
+    var result = 0;
+    var results=[];
+    for (var i = 0; i < this.number; i++) {
+      var roll = Math.floor(Math.random() * this.sizeOfDice) + 1 + this.addValue; 
+      result += roll;
+      results.push(roll);
+    }
+    this.results = results;
+    this.result = result;
+    return this;
+  };
+  this.remove = function(index) {
+    self.rolls.splice(index, 1);
+  };
+  this.get = function(index) {
+    return self.rolls[index];
+  };
+}
+MakeRoll.prototype = new AddRoll();
 
 
-
-
+services.factory('Roll', [function() {
+  return new MakeRoll();
+}
+]);
