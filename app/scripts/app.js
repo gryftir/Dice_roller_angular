@@ -15,6 +15,7 @@ var learning = angular
     'controllers',
     'ngTouch',
     'services',
+    'ngMaterial',
   ]);
 
   learning.config(function ($routeProvider) {
