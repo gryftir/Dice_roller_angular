@@ -1,16 +1,16 @@
-<div class="wrapper container-fluid grid">
+<div class="wrapper container-fluid">
   <div class="container">
-    <div class="jumbotron shadow-z1">
+    <div class="jumbotron md-whiteframe-z1">
       <h1>Roll Roller</h1>
     </div>
   </div>
 
   <div id="main" class="container">
     <div class="row">
-      <div class="panel panel-primary shadow-z1">
+      <div class="panel panel-primary md-whiteframe-z1">
         <div class="panel-body">
           <div class="row vert-10" ng-repeat="rolladder in AddRolls">
-            <label class="col-sm-7" ng-class="{'text-primary': rolladder.class==true}" for="{{rolladder.id}}">{{rolladder.label}}</label>
+            <label class="col-sm-7" ng-class="{'text-primary h4': rolladder.class==true}" for="{{rolladder.id}}">{{rolladder.label}}</label>
             <div class="col-sm-5 pull-right">
               <input type="{{rolladder.type}}" min="0" placeholder="{{rolladder.placeholder}}" name="{{rolladder.label}}" 
               class="form-control" id="{{rolladder.id}}" ng-model="$parent[rolladder.model]" ng-focus="rolladder.class=true" ng-blur="rolladder.class=false"/>
@@ -18,22 +18,22 @@
           </div>
         </div>
         <div class="panel-footer">
-          <button class="btn btn-primary" ng-click="Roll.add(numDice,sizeOfDie,amountToAdd, setTitle)">Add Roller</button>
+          <md-button class="md-fab md-primary ion ion-plus" ng-click="Roll.add(numDice,sizeOfDie,amountToAdd, setTitle)"></md-button>
         </div>
       </div>
     </div>
   </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6" ng-repeat="dice in Roll.rolls" >
+      <div class="col-sm-12 col-md-6 roll-box" ng-repeat="dice in Roll.rolls" >
         <div  ng-class="dice.class"  ng-Mouseover="dice.class='md-whiteframe-z5'" ng-Mouseleave="dice.class='md-whiteframe-z1'" ng-dblclick="dice.rollDice()">
           <div class="panel panel-primary">
             <div class="panel-heading">
               {{dice.title}}
             </div>
-            <div class="panel-body">
-              {{dice.number}}d{{dice.sizeOfDice}} + {{dice.addValue}}
-              <button class="btn btn-primary" ng-click="dice.rollDice()">Roll</button>
-              <button class="btn btn-default pull-right" ng-click="Roll.remove($index)">Remove</button>
+            <div class="panel-body roll-result">
+              {{dice.number}}d{{dice.sizeOfDice}} + {{dice.addValue}}<span>  </span>
+              <md-button class="md-fab md-primary" ng-click="dice.rollDice()">Roll</md-button>
+              <md-button class="md-warn pull-right" ng-click="Roll.remove($index)"><span class="ion ion-trash-b h4"> </span></md-button>
             </div>
             <div class="panel-footer">
               <div> Result: <span class="badge">{{dice.result}}</span>
