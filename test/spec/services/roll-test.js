@@ -15,7 +15,6 @@ describe('Service: Roll', function () {
   it('Should start out with Roll.rolls empty', function () {
     expect(Roll).not.toBe(null);
     expect(Roll.rolls).not.toBe(null);
-
     expect(Roll.rolls.length).toEqual(0);
   });
   it('Should let you add elements', function() {
@@ -58,5 +57,11 @@ describe('Service: Roll', function () {
     Roll.rolls[0].add();
     expect(Roll.rolls[0].get(0)).not.toBe(null);
     expect(Roll.rolls[0].get(0)).toEqual(Roll.rolls[0]);
+  });
+  it('lets you reset values', function() {
+      Roll.add();
+      Roll.reset();
+      expect(Roll.rolls).not.toBe(null);
+      expect(Roll.rolls.length).toEqual(0);
   });
 });
