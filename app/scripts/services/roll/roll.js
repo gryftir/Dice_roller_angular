@@ -40,10 +40,6 @@ function AddRoll(number, sizeOfDice, add, title) {
     return self.rolls[index];
   };
     
-}
-
-function MakeRoll() {
-  var self = this;
   this.print = function() {
     console.log(self.serialize());
   };
@@ -65,6 +61,9 @@ function MakeRoll() {
   this.reset = function() {
     self.rolls = [];
   };
+}
+
+function MakeRoll() {
 }
 
 MakeRoll.prototype = new AddRoll();
