@@ -55,6 +55,8 @@ describe('Service: Roll', function () {
     jasmine.addCustomEqualityTester(rollCompare);
     Roll.add();
     expect(Roll.rolls[0]).toBeDefined();
-    
+    Roll.rolls[0].add();
+    expect(Roll.rolls[0].get(0)).not.toBe(null);
+    expect(Roll.rolls[0].get(0)).toEqual(Roll.rolls[0]);
   });
 });
