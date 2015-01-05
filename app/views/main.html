@@ -24,8 +24,8 @@
     </div>
   </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6" ng-repeat="dice in Roll.rolls">
-        <div  ng-class="dice.class"  ng-Mouseover="dice.class='md-whiteframe-z5'" ng-Mouseleave="dice.class='md-whiteframe-z1'">
+      <div class="col-sm-12 col-md-6" ng-repeat="dice in Roll.rolls" >
+        <div  ng-class="dice.class"  ng-Mouseover="dice.class='md-whiteframe-z5'" ng-Mouseleave="dice.class='md-whiteframe-z1'" ng-dblclick="dice.rollDice()">
           <div class="panel panel-primary">
             <div class="panel-heading">
               {{dice.title}}
