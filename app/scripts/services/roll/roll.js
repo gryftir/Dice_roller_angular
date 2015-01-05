@@ -19,8 +19,8 @@ function AddRoll(number, sizeOfDice, add, title) {
   this.number = number || 1;
   this.sizeOfDice = sizeOfDice || 6;
   this.addValue = add || 0;
-  this.rollDice = function() {
   this.__type__ = 'AddRoll';
+  this.rollDice = function() {
     var result = 0;
     var results=[];
     for (var i = 0; i < this.number; i++) {
@@ -44,20 +44,21 @@ function AddRoll(number, sizeOfDice, add, title) {
 function MakeRoll() {
   var self = this;
   this.print = function() {
-    console.log(self.toJson());
+    console.log(self.serialize());
   };
-  this.toJson = function() {
+  this.serialize = function() {
     return JSON.stringify(self.rolls);
   };
 
-  this.fromJson = function(value) {
+  this.deserialize = function(value) {
     var revive = function (key, value) {
       if (value.hasOwnProperty('__type__') && value.__type__ === 'AddRoll' ) {
         return new AddRoll(value.number, value.sizeOfDice, value.addValue, value.title);
       }
       return value;
     };
-    return JSON.parse(value, revive);
+    self.rolls = JSON.parse(value, revive);
+    return self.rolls;
   };
   this.__type__ = 'MakeRoll';
 }
