@@ -62,6 +62,9 @@ function MakeRoll() {
     return self.rolls;
   };
   this.__type__ = 'MakeRoll';
+  this.reset = function() {
+    self.rolls = [];
+  };
 }
 
 MakeRoll.prototype = new AddRoll();
