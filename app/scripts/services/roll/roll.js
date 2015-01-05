@@ -20,17 +20,18 @@ function AddRoll(number, sizeOfDice, add, title) {
   this.sizeOfDice = sizeOfDice || 6;
   this.addValue = add || 0;
   this.__type__ = 'AddRoll';
-  this.rollDice = function() {
+  this.rollDice = function(value) {
+    var self = value || this;
     var result = 0;
     var results=[];
-    for (var i = 0; i < this.number; i++) {
-      var roll = Math.floor(Math.random() * this.sizeOfDice) + 1; 
+    for (var i = 0; i < self.number; i++) {
+      var roll = Math.floor(Math.random() * self.sizeOfDice) + 1; 
       result += roll;
       results.push(roll);
     }
-    this.results = results;
-    this.result = result + this.addValue;
-    return this;
+    self.results = results;
+    self.result = result + self.addValue;
+    return self;
   };
   this.remove = function(index) {
     self.rolls.splice(index, 1);
