@@ -57,19 +57,12 @@ function AddRoll(number, sizeOfDice, add, title) {
     self.rolls = JSON.parse(value, revive);
     return self.rolls;
   };
-  this.__type__ = 'MakeRoll';
   this.reset = function() {
     self.rolls = [];
   };
 }
 
-function MakeRoll() {
-}
-
-MakeRoll.prototype = new AddRoll();
-
-
 services.factory('Roll', [function() {
-  return new MakeRoll();
+  return new AddRoll();
 }
 ]);
