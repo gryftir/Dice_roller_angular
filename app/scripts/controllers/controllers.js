@@ -1,6 +1,6 @@
 //module for all controllers
 'use strict';
-angular.module('controllers', []);
+angular.module('controllers', ['LocalStorageModule']);
 
 
 

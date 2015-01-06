@@ -8,20 +8,36 @@
  * Controller of the learningApp
  */
 angular.module('controllers')
-.controller('MainCtrl', ['$scope', 'Roll', function ($scope, Roll) {
-  Roll.add(2,6, 0,'Example 2d6+0');
-  Roll.add(2,8,1, 'Example 2: 2d8+1');
+.controller('MainCtrl', ['$scope', 'Roll', 'localStorageService', function ($scope, Roll, localStorageService) {
+  if(localStorageService.length()) {
+    var data = localStorageService.get('rolls');
+    if (localStorageService.isSupported && Object.prototype.toString.call(data) === '[object Array]' && data.length > 0) {
+      Roll.deserialize(JSON.stringify(data));
+    }
+  }
+
   $scope.Roll = Roll;
+  $scope.rolls = Roll.rolls;
+  $scope.update = function() {
+    localStorageService.set('rolls', Roll.serialize());
+  };
+  $scope.$watch('rolls', $scope.update, true);
+  if (Roll.rolls.length === 0 ) {
+    $scope.addDice(2,6, 0,'Example 2d6+0');
+    $scope.addDice(2,8,1, 'Example 2: 2d8+1');
+  }
+
+
   $scope.AddRolls = [
     {
-      'label':'Roller Title',
-      'class':false,
-      'id':'title',
-      'model':'setTitle',
-      'placeholder': 'Title',
-      'type':'text'
-    },
-    {
+    'label':'Roller Title',
+    'class':false,
+    'id':'title',
+    'model':'setTitle',
+    'placeholder': 'Title',
+    'type':'text'
+  },
+  {
     'label':'Number of Dice',
     'class':false,
     'id':'numberOfDice',
@@ -46,5 +62,6 @@ angular.module('controllers')
     'type':'number',
   }
   ];
-}]);
+}
+]);
 
