@@ -4,7 +4,7 @@ describe('Service: Roll', function () {
 
   var Roll;
   var rollCompare = function(a, b) {
-    return (a.number === b.number && a.sizeOfDice === b.sizeOfDice && a.addValue === b.addValue);
+    return (a.number === b.number && a.sizeOfDice === b.sizeOfDice && a.addValue === b.addValue && a.title === b.title);
   };
   // load the controller's module
   beforeEach(function() {
@@ -57,4 +57,29 @@ describe('Service: Roll', function () {
       expect(Roll.rolls).not.toBe(null);
       expect(Roll.rolls.length).toEqual(0);
   });
+  it('can serialize and deserialize', function () {
+    Roll.add(3,4,5,'test');
+    var beforeStore = Roll.get(0);
+    var storage = Roll.serialize();
+    Roll.reset();
+    expect(Roll.rolls.length).toEqual(0);
+    Roll.deserialize(storage);
+    var afterStore = Roll.get(0);
+    var compareStore = {
+      number:3,
+      sizeOfDice: 4,
+      addValue: 5,
+      title: 'test'
+    };
+
+    jasmine.addCustomEqualityTester(rollCompare);
+    expect(beforeStore).toEqual(afterStore);
+    expect(afterStore.addDice).toBeDefined();
+    expect(afterStore.addDice).not.toBeNull();
+    expect(afterStore).toEqual(compareStore);
+    expect(afterStore.rollDice).not.toBeNull();
+    expect(afterStore.rollDice).toBeDefined();
+  });
+
+    
 });
