@@ -9,11 +9,15 @@
  */
 angular.module('controllers')
 .controller('MainCtrl', ['$scope', 'Roll', 'localStorageService', function ($scope, Roll, localStorageService) {
-  if(localStorageService.length()) {
-    var data = localStorageService.get('rolls');
-    if (localStorageService.isSupported && Object.prototype.toString.call(data) === '[object Array]' && data.length > 0) {
-      Roll.deserialize(JSON.stringify(data));
-    }
+  var data = localStorageService.get('rolls');
+  if (data) {
+    Roll.deserialize(JSON.stringify(data));
+  }
+  if (! angular.isArray(Roll.rolls)) {
+    Roll.rolls = [];
+  }
+  if (Roll.rolls.length < 1) { 
+    Roll.add(2,8, 1,'Example: 2d8+1');
   }
 
   $scope.Roll = Roll;
@@ -22,10 +26,10 @@ angular.module('controllers')
     localStorageService.set('rolls', Roll.serialize());
   };
   $scope.$watch('rolls', $scope.update, true);
-  if (Roll.rolls.length === 0 ) {
-    $scope.addDice(2,6, 0,'Example 2d6+0');
-    $scope.addDice(2,8,1, 'Example 2: 2d8+1');
-  }
+
+  $scope.reset = function () {
+    localStorageService.remove('rolls');
+  };
 
 
   $scope.AddRolls = [
