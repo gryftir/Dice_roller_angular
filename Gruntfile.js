@@ -35,18 +35,18 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all'],
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        }
+tasks: ['newer:jshint:all'],
+options: {
+  livereload: '<%= connect.options.livereload %>'
+}
       },
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma']
+tasks: ['newer:jshint:test', 'karma']
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
+tasks: ['newer:copy:styles', 'autoprefixer']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -57,8 +57,8 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+'.tmp/styles/{,*/}*.css',
+'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -138,7 +138,7 @@ module.exports = function (grunt) {
           src: [
             '.tmp',
             '<%= yeoman.dist %>/{,*/}*',
-            '!<%= yeoman.dist %>/.git{,*/}*'
+'!<%= yeoman.dist %>/.git{,*/}*'
           ]
         }]
       },
@@ -155,7 +155,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '.tmp/styles/',
           src: '{,*/}*.css',
-          dest: '.tmp/styles/'
+dest: '.tmp/styles/'
         }]
       }
     },
@@ -173,9 +173,9 @@ module.exports = function (grunt) {
       dist: {
         src: [
           '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/styles/fonts/*'
+'<%= yeoman.dist %>/styles/{,*/}*.css',
+'<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+'<%= yeoman.dist %>/styles/fonts/*'
         ]
       }
     },
@@ -202,10 +202,10 @@ module.exports = function (grunt) {
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      options: {
-        assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
-      }
+css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+options: {
+  assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
+}
     },
 
     // The following *-min tasks will produce minified files in the dist folder
@@ -217,141 +217,141 @@ module.exports = function (grunt) {
     //     files: {
     //       '<%= yeoman.dist %>/styles/main.css': [
     //         '.tmp/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
+//       ]
+//     }
+//   }
+// },
+// uglify: {
+//   dist: {
+//     files: {
+//       '<%= yeoman.dist %>/scripts/scripts.js': [
+//         '<%= yeoman.dist %>/scripts/scripts.js'
+//       ]
+//     }
+//   }
+// },
+// concat: {
+//   dist: {}
+// },
 
-    imagemin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
-          dest: '<%= yeoman.dist %>/images'
-        }]
-      }
+imagemin: {
+  dist: {
+    files: [{
+      expand: true,
+      cwd: '<%= yeoman.app %>/images',
+      src: '{,*/}*.{png,jpg,jpeg,gif}',
+dest: '<%= yeoman.dist %>/images'
+    }]
+  }
+},
+
+svgmin: {
+  dist: {
+    files: [{
+      expand: true,
+      cwd: '<%= yeoman.app %>/images',
+      src: '{,*/}*.svg',
+dest: '<%= yeoman.dist %>/images'
+    }]
+  }
+},
+
+htmlmin: {
+  dist: {
+    options: {
+      collapseWhitespace: true,
+      conservativeCollapse: true,
+      collapseBooleanAttributes: true,
+      removeCommentsFromCDATA: true,
+      removeOptionalTags: true
     },
+    files: [{
+      expand: true,
+      cwd: '<%= yeoman.dist %>',
+      src: ['*.html', 'views/{,*/}*.html'],
+dest: '<%= yeoman.dist %>'
+    }]
+  }
+},
 
-    svgmin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.svg',
-          dest: '<%= yeoman.dist %>/images'
-        }]
-      }
-    },
+// ng-annotate tries to make the code safe for minification automatically
+// by using the Angular long form for dependency injection.
+ngAnnotate: {
+  dist: {
+    files: [{
+      expand: true,
+      cwd: '.tmp/concat/scripts',
+      src: ['*.js', '!oldieshim.js'],
+      dest: '.tmp/concat/scripts'
+    }]
+  }
+},
 
-    htmlmin: {
-      dist: {
-        options: {
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
-          removeOptionalTags: true
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
-          dest: '<%= yeoman.dist %>'
-        }]
-      }
-    },
+// Replace Google CDN references
+cdnify: {
+  dist: {
+    html: ['<%= yeoman.dist %>/*.html']
+  }
+},
 
-    // ng-annotate tries to make the code safe for minification automatically
-    // by using the Angular long form for dependency injection.
-    ngAnnotate: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/concat/scripts',
-          src: ['*.js', '!oldieshim.js'],
-          dest: '.tmp/concat/scripts'
-        }]
-      }
-    },
-
-    // Replace Google CDN references
-    cdnify: {
-      dist: {
-        html: ['<%= yeoman.dist %>/*.html']
-      }
-    },
-
-    // Copies remaining files to places other tasks can use
-    copy: {
-      dist: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= yeoman.app %>',
-          dest: '<%= yeoman.dist %>',
-          src: [
-            '*.{ico,png,txt}',
-            '.htaccess',
-            '*.html',
-            'views/{,*/}*.html',
-            'images/{,*/}*.{webp}',
-            'fonts/{,*/}*.*'
-          ]
-        }, {
-          expand: true,
-          cwd: '.tmp/images',
-          dest: '<%= yeoman.dist %>/images',
-          src: ['generated/*']
-        }, {
-          expand: true,
-          cwd: 'bower_components/bootstrap/dist',
-          src: 'fonts/*',
-          dest: '<%= yeoman.dist %>'
-        }]
-      },
-      styles: {
-        expand: true,
-        cwd: '<%= yeoman.app %>/styles',
-        dest: '.tmp/styles/',
-        src: '{,*/}*.css'
-      }
-    },
-
-    // Run some tasks in parallel to speed up the build process
-    concurrent: {
-      server: [
-        'copy:styles'
-      ],
-      test: [
-        'copy:styles'
-      ],
-      dist: [
-        'copy:styles',
-        'imagemin',
-        'svgmin'
+// Copies remaining files to places other tasks can use
+copy: {
+  dist: {
+    files: [{
+      expand: true,
+      dot: true,
+      cwd: '<%= yeoman.app %>',
+      dest: '<%= yeoman.dist %>',
+      src: [
+        '*.{ico,png,txt}',
+        '.htaccess',
+        '*.html',
+        'views/{,*/}*.html',
+    'images/{,*/}*.{webp}',
+    'fonts/{,*/}*.*'
       ]
-    },
+    }, {
+      expand: true,
+      cwd: '.tmp/images',
+      dest: '<%= yeoman.dist %>/images',
+      src: ['generated/*']
+    }, {
+      expand: true,
+      cwd: 'bower_components/bootstrap/dist',
+      src: 'fonts/*',
+      dest: '<%= yeoman.dist %>'
+    }]
+  },
+  styles: {
+    expand: true,
+    cwd: '<%= yeoman.app %>/styles',
+    dest: '.tmp/styles/',
+    src: '{,*/}*.css'
+  }
+},
 
-    // Test settings
-    karma: {
-      unit: {
-        configFile: 'test/karma.conf.js',
-        singleRun: true
-      }
-    }
+// Run some tasks in parallel to speed up the build process
+concurrent: {
+  server: [
+    'copy:styles'
+  ],
+  test: [
+    'copy:styles'
+  ],
+  dist: [
+    'copy:styles',
+    'imagemin',
+    'svgmin'
+  ]
+},
+
+// Test settings
+karma: {
+  unit: {
+    configFile: 'test/karma.conf.js',
+    singleRun: true
+  }
+}
   });
 
 
@@ -396,6 +396,23 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'filerev',
+    'usemin',
+    'htmlmin'
+  ]);
+
+  grunt.registerTask('git', [
+    'clean:dist',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngAnnotate',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    //'filerev', easier github pages
     'usemin',
     'htmlmin'
   ]);
