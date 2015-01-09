@@ -16,6 +16,7 @@ var learning = angular
     'ngTouch',
     'services',
     'ngMaterial',
+    'Collapse',
   ]);
 
   learning.config(function ($routeProvider) {
