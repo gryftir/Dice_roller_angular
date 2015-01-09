@@ -74,8 +74,8 @@ describe('Service: Roll', function () {
 
     jasmine.addCustomEqualityTester(rollCompare);
     expect(beforeStore).toEqual(afterStore);
-    expect(afterStore.addDice).toBeDefined();
-    expect(afterStore.addDice).not.toBeNull();
+    expect(afterStore.add).toBeDefined();
+    expect(afterStore.add).not.toBeNull();
     expect(afterStore).toEqual(compareStore);
     expect(afterStore.rollDice).not.toBeNull();
     expect(afterStore.rollDice).toBeDefined();
