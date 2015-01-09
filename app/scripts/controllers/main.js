@@ -9,16 +9,22 @@
  */
 angular.module('controllers')
 .controller('MainCtrl', ['$scope', 'Roll', 'localStorageService', function ($scope, Roll, localStorageService) {
+
+  $scope.reset = function () {
+    localStorageService.remove('rolls');
+    Roll.reset();
+    Roll.add(2,8, 1,'Example: 2d8+1');
+  };
+  //setup rolls from session storage
   var data = localStorageService.get('rolls');
   if (data) {
     Roll.deserialize(JSON.stringify(data));
   }
-  if (! angular.isArray(Roll.rolls)) {
-    Roll.rolls = [];
+  //session storage didn't work
+  if (! angular.isArray(Roll.rolls) || Roll.rolls.length < 1) {
+    $scope.reset();
   }
-  if (Roll.rolls.length < 1) { 
-    Roll.add(2,8, 1,'Example: 2d8+1');
-  }
+  //session storage was empty
 
   $scope.Roll = Roll;
   $scope.rolls = Roll.rolls;
@@ -27,9 +33,7 @@ angular.module('controllers')
   };
   $scope.$watch('rolls', $scope.update, true);
 
-  $scope.reset = function () {
-    localStorageService.remove('rolls');
-  };
+  $scope.addCollapse = true;
 
 
   $scope.AddRolls = [
