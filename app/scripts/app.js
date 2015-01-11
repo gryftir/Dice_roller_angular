@@ -15,7 +15,6 @@ var learning = angular
     'controllers',
     'ngTouch',
     'services',
-    'ngMaterial',
     'Collapse',
   ]);
 
@@ -28,4 +27,5 @@ var learning = angular
       .otherwise({
         redirectTo: '/'
       });
+
   });
