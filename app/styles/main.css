@@ -41,7 +41,7 @@ body {
   margin: 30px 0;
 }
 
-.md-accent {
+.md-accent, .md-primary {
   color: white !important;
 }
 
