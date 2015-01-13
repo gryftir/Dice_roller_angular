@@ -12,10 +12,9 @@ var learning = angular
   .module('learningApp', [
     'ngRoute',
     'ngSanitize',
+    'services',
     'controllers',
     'ngTouch',
-    'services',
-    'Collapse',
   ]);
 
   learning.config(function ($routeProvider) {

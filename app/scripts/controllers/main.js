@@ -8,7 +8,7 @@
  * Controller of the learningApp
  */
 angular.module('controllers')
-.controller('MainCtrl', ['$scope', 'Roll', 'localStorageService', function ($scope, Roll, localStorageService) {
+.controller('MainCtrl', ['$scope', 'Roll','localStorageService', 'CollapseProvider',  function ($scope, Roll, localStorageService, CollapseProvider) {
 
   $scope.reset = function () {
     localStorageService.remove('rolls');
@@ -33,7 +33,6 @@ angular.module('controllers')
   };
   $scope.$watch('rolls', $scope.update, true);
 
-  $scope.addCollapse = true;
 
 
   $scope.AddRolls = [
@@ -70,6 +69,7 @@ angular.module('controllers')
     'type':'number',
   }
   ];
+  $scope.addCollapse = CollapseProvider.add('addCollapse');
 }
 ]);
 

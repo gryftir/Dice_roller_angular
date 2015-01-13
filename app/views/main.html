@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li>
-          <md-button class="md-fab ion ion-plus" ng-class="{'md-primary': addCollapse == false, 'md-accent': addCollapse == true}" ng-click="addCollapse = !addCollapse"></md-button>
+          <md-button class="md-fab ion ion-plus"  ng-class="addCollapse.Collapsed ? 'md-primary' : 'md-accent' " ng-click="addCollapse.collapseToggle()"></md-button>
           <span class="sr-only">Add Roller</span>
           </li >
         </ul>
@@ -34,13 +34,13 @@
         <div class="row">
           <h1>Dice Roller</h1>
         </div>
-        <div class="row pull-left">
-          <md-button class="md-raised"  ng-class="{'md-primary': addCollapse == false, 'md-accent': addCollapse == true}" ng-click="addCollapse = !addCollapse">Add</md-button>
+        <div class="row">
+          <md-button class="md-raised pull-left"  ng-class="addCollapse.Collapsed ? 'md-primary' : 'md-accent' " ng-click="addCollapse.collapseToggle()">Add</md-button>
         </div>
       </div>
     </div>
 
-    <div id="main" class="container" collapse="addCollapse">
+    <div id="main" class="container" collapse="addCollapse.Collapsed">
       <div class="row">
         <div class="panel panel-primary md-whiteframe-z1">
           <div class="panel-body">
@@ -53,7 +53,10 @@
             </div>
           </div>
           <div class="panel-footer">
-            <md-button class="md-raised md-primary md-hue-1" ng-click="Roll.add(numDice,sizeOfDie,amountToAdd, setTitle); addCollapse = !addCollapse">add</md-button>
+            <md-button class="md-raised md-primary md-hue-1" ng-click="Roll.add(numDice,sizeOfDie,amountToAdd, setTitle); addCollapse.toggle()">add</md-button>
+            <md-checkbox class="pull-right" ng-model="addCollapse.holdval" ng-checked="addCollapse.isHeld()" ng-change ="addCollapse.holdToggle()" aria-label="Keep AddBox Open">
+              <span>Keep Open</span>
+            </md-checkbox>
           </div>
         </div>
       </div>
