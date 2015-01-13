@@ -24,6 +24,20 @@ angular.module('services').factory('CollapseProvider', [function () {
       self.holdOpen = ! self.holdOpen;
       return self.holdOpen;
     };
+    this.release = function () {
+      self.holdOpen = false;
+    };
+    this.hold = function () {
+      self.holdOpen = true;
+    };
+    this.close = function () {
+      if (self.holdOpen) { return; }
+      self.Collapsed = true;
+    };
+    this.open = function () {
+      self.Collapsed = false;
+    };
+
   }
 
   function CollapseHolder() {
@@ -50,31 +64,27 @@ angular.module('services').factory('CollapseProvider', [function () {
       return false;
     };
     this.every = function(funcName) {
-      if (!funcName) { return false;}
-      //test if funcName is a function name
-      if (angular.isFunction(Object.keys(self.hash)[0][funcName])) {
-        Object.keys(self.hash).forEach(function(value) { 
-          self.hash[value][funcName](); 
-        });
+      if (!funcName) { 
+        return false;
       }
+      Object.keys(self.hash).forEach(function(value) { 
+        self.hash[value][funcName](); 
+      });
+      return true;
     };
 
-    this.turnOn = function (name) {
+    this.openItemAndCollapseRemainder = function (name) {
+      var isFunc;
       if (self.exists(name)) {
-        self.every(close);
-        self.get(name).open();
-        return true;
+        isFunc = self.every('close');
+        if (isFunc) {
+          self.get(name).open();
+        }
+        return isFunc;
       }
       return false;
     };
-    this.turnOff = function (name) {
-      if (self.exists(name)) {
-        self.every(open);
-        self.get(name).close();
-        return true;
-      }
-      return false;
-    };
+
     this.reset = function () {
       self.hash = {};
     };
