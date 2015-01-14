@@ -419,7 +419,7 @@ karma: {
     'cdnify',
     'cssmin',
     'uglify',
-    //'filerev', easier github pages
+    //'filerev', 
     'usemin',
     'htmlmin',
     'gh-pages',
