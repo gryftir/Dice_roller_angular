@@ -12,7 +12,7 @@
         <img src="images/dice.png" alt=""/>
       </a>
       <h2 class='navbar-text'>Dice Roller</h2>
-      </div>
+    </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -23,39 +23,40 @@
           </li >
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li ng-click="reset()"><span class="navbar-text"><span class="text-danger">Reset Dice</span></span>
+          <li ng-click="reset()">
+            <md-button class="md-raised md-warn">Reset Dice</md-button>
           </li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
-<div class="wrapper container-fluid" >
-  <div ng-include src='"views/add.html"' ></div>
+  <div class="wrapper container-fluid" >
+    <div ng-include src='"views/add.html"' ></div>
 
-  <div class="row">
-    <div class="col-sm-12 col-md-6 roll-box" ng-repeat="dice in Roll.rolls" >
-      <div  ng-class="dice.class"  ng-Mouseover="dice.class='md-whiteframe-z5'" ng-Mouseleave="dice.class='md-whiteframe-z1'" ng-dblclick="dice.rollDice()">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            {{dice.title}}
-          </div>
-          <div class="panel-body roll-result">
-            {{dice.number}}d{{dice.sizeOfDice}} + {{dice.addValue}}<span>  </span>
-            <md-button class="md-fab md-primary" ng-click="dice.rollDice()">Roll</md-button>
-            <md-button class="md-warn pull-right" ng-click="Roll.remove($index)"><span class="glyphicon glyphicon-trash"> </span></md-button>
-          </div>
-          <div class="panel-footer">
-            <div> Result: <span class="badge">{{dice.result}}</span>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 roll-box" ng-repeat="dice in Roll.rolls" >
+        <div  ng-class="dice.class"  ng-Mouseover="dice.class='md-whiteframe-z5'" ng-Mouseleave="dice.class='md-whiteframe-z1'" ng-dblclick="dice.rollDice()">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              {{dice.title}}
             </div>
-            <div>Rolled:
-              <span ng-repeat="die in dice.results">
-                <span class="badge">{{die}} </span> 
-              </span>
+            <div class="panel-body roll-result">
+              {{dice.number}}d{{dice.sizeOfDice}} + {{dice.addValue}}<span>  </span>
+              <md-button class="md-fab md-primary" ng-click="dice.rollDice()">Roll</md-button>
+              <md-button class="md-warn pull-right" ng-click="Roll.remove($index)"><span class="glyphicon glyphicon-trash"> </span></md-button>
+            </div>
+            <div class="panel-footer">
+              <div> Result: <span class="badge">{{dice.result}}</span>
+              </div>
+              <div>Rolled:
+                <span ng-repeat="die in dice.results">
+                  <span class="badge">{{die}} </span> 
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
