@@ -8,12 +8,26 @@
  * Controller of the learningApp
  */
 angular.module('controllers')
-.controller('MainCtrl', ['$scope', 'Roll','localStorageService', 'CollapseProvider',  function ($scope, Roll, localStorageService, CollapseProvider) {
+.controller('MainCtrl', ['$scope', 'Roll','localStorageService', 'CollapseProvider', '$mdDialog',  function ($scope, Roll, localStorageService, CollapseProvider, $mdDialog) {
 
   $scope.reset = function () {
     localStorageService.remove('rolls');
     Roll.reset();
     Roll.add(2,8, 1,'Example: 2d8+1');
+  };
+
+$scope.confirmReset = function(ev) {
+    var confirm = $mdDialog.confirm()
+      .title('Are you sure?')
+      .content('Resetting the Dice will Permanently remove all rollers below and restore the example!')
+      .ariaLabel('Reset all Dice')
+      .ok('Reset the Dice')
+      .cancel('Cancel')
+      .targetEvent(ev);
+    $mdDialog.show(confirm).then(function() {
+      $scope.reset();
+    }, function() {
+    });
   };
   //setup rolls from session storage
   var data = localStorageService.get('rolls');
