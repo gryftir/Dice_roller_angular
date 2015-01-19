@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -15,15 +15,15 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse navbtn" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li>
-          <md-button class="md-fab"  ng-class="addCollapse.Collapsed ? 'md-accent' : 'md-primary' " ng-click="addCollapse.collapseToggle()"><span class="glyphicon glyphicon-plus"></span></md-button>
+        <li class="btn-lg">
+          <md-button class="md-raised"  ng-class="addCollapse.Collapsed ? 'md-accent' : 'md-primary' " ng-click="addCollapse.collapseToggle()"><span class="">add</span></md-button>
           <span class="sr-only">Add Roller</span>
           </li >
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li>
+          <li class="btn-lg">
             <md-button ng-click="confirmReset($event)" class="md-raised md-warn">Reset Dice</md-button>
           </li>
         </ul>
